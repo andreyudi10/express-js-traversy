@@ -13,9 +13,41 @@ app.set('view engine', 'pug');
 
 // home route
 app.get('/', (req, res) =>{
-  // res.send("live sending");
-  res.render("index");
+  // static articles
+  let articles = [
+    {
+      id:1,
+      title:'Article one',
+      author:'andri',
+      body:'this is first article'
+    },
+    {
+      id:2,
+      title:'Article two',
+      author:'andri',
+      body:'this is second article'
+    },
+    {
+      id:3,
+      title:'Article three',
+      author:'andri',
+      body:'this is third article'
+    },
+  ];
+
+  // res.send("live sending");  
+  res.render("index", {
+    title:'Hello',
+    articles:articles
+  });
   //send something to browser
+})
+
+// add route
+app.get('/articles/add', (req,res)=>{
+  res.render('add_Article',{
+    title:'Add Article'
+  })
 })
 
 app.listen(3000, ()=>{
